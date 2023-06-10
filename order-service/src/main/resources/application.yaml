@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: order-service
+  datasource:
+    postgres:
+      username: myuser
+      password: secret
+      url: jdbc:postgresql://localhost:5433/mydatabase
+    mariadb:
+      username: myuser
+      password: secret
+      url: jdbc:mariadb://localhost:3310/springbootdb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      org:
+        hibernate:
+          envers:
+            audit_table_prefix: AUDIT_
+            revision_field_name: revision
+            revision_type_field_name: revision_type
+            audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
+            store_data_at_delete: true
